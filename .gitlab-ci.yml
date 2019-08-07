@@ -5,11 +5,13 @@ cache:
     - node_modules/
 
 stages:
-  - setup
-  - test
+  – build
+  – test
+  – staging
+  – deploy
 
 setup_js:
-  stage: setup
+  stage: build
   script:
     - npm install
   artifacts:
@@ -18,7 +20,7 @@ setup_js:
     paths:
       - node_modules/
   only:
-    - staging
+    - master
   tags:
     - docker
 
@@ -29,6 +31,6 @@ test_js:
   script:
     - npm test
   only:
-    - staging
+    - master
   tags:
     - docker
