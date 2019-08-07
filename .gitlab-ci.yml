@@ -30,3 +30,16 @@ test_js:
     - master
   tags:
     - docker
+
+pages:
+  stage: deploy
+  script:
+    - yarn build
+  # - mkdir .public
+  # - cp -r * .public
+  # - mv .public public
+  artifacts:
+    paths:
+    - dist
+  only:
+    - master
