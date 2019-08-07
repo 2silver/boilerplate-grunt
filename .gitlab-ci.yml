@@ -9,7 +9,7 @@ stages: [build, test, staging, deploy]
 setup_js:
   stage: build
   script:
-    - npm sass
+    - npm install sass
     - npm install
   artifacts:
     expire_in: 72h
