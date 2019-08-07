@@ -1,7 +1,45 @@
-version: '3'
+version: '3.2'
 
 services:
   gitlab:
     image: gitlab/gitlab-ce:latest
-    ports:
-        - 80:80
+    hostname: gitlab
+    volumes: ["gitlab-config:/etc/gitlab", "gitlab-logs:/var/log/gitlab", "gitlab-data:/var/opt/gitlab"]
+    ports: ["443", "1000:80", "2222:22", "4567:4567"]
+    restart: always
+    # environment:
+    #   GITLAB_OMNIBUS_CONFIG: |
+    #     ## GitLab configuration settings
+    #     ##! Check out the latest version of this file to know about the different
+    #     ##! settings that can be configured by this file, which may be found at:
+    #     ##! https://gitlab.com/gitlab-org/omnibus-gitlab/raw/master/files/gitlab-config-template/gitlab.rb.template
+    #     ## GitLab URL
+    #     ##! URL on which GitLab will be reachable.
+    #     ##! For more details on configuring external_url see:
+    #     ##! https://docs.gitlab.com/omnibus/settings/configuration.html#configuring-the-external-url-for-gitlab
+    #     external_url 'http://gitlab.example.com'
+    #     ################################################################################
+    #     ## gitlab.yml configuration
+    #     ##! Docs: https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/settings/gitlab.yml.md
+    #     ################################################################################
+    #     gitlab_rails['gitlab_ssh_host'] = 'ssh.gitlab.example.com'
+    #     gitlab_rails['time_zone'] = 'UTC'
+    #     ################################################################################
+    #     ## Container Registry settings
+    #     ##! Docs: https://docs.gitlab.com/ce/administration/container_registry.html
+    #     ################################################################################
+    #     registry_external_url 'http://registry.gitlab.example.com'
+    #     ################################################################################
+    #     ## GitLab Pages
+    #     ##! Docs: https://docs.gitlab.com/ce/pages/administration.html
+    #     ################################################################################
+    #     pages_external_url 'http://pages.example.com/'
+  gitlab-runner:
+    image: gitlab/gitlab-runner:alpine
+    volumes: ["gitlab-runner-config:/etc/gitlab-runner:Z", "/var/run/docker.sock:/var/run/docker.sock"]
+
+volumes:
+  gitlab-config:
+  gitlab-logs:
+  gitlab-data:
+  gitlab-runner-config:
