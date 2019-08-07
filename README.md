@@ -1,24 +1,21 @@
 # Development
 
-Local Setup Gitlab
+## Local Setup Gitlab
 ```docker-compose up -d {gitlab, gitlab-runner}```
+via ```docker exec sh```
 ```docker exec -i -t $GITLAB-RUNNER-ID sh```
-```gitlab-runner register -n -r $GITLAB-RUNNER-TOKEN-FROM-PROCEJT-CICD -u http://gitlab --executor docker --docker-image docker:latest --docker-network-mode fhstpcdnexample_default --docker-privileged```
+```gitlab-runner register -n --url http://gitlab --clone-url http://gitlab --registration-token $GITLAB-RUNNER-TOKEN-FROM-PROCEJT-CICD --executor docker --docker-image "docker:latest" --docker-privileged --docker-network-mode gitlab-network```
+or direct via ```docker exec```
+```docker exec -it gitlab-runner gitlab-runner register -n --url http://gitlab --clone-url http://gitlab --registration-token $GITLAB-RUNNER-TOKEN-FROM-PROCEJT-CICD --executor docker --docker-image "docker:latest" --docker-privileged --docker-network-mode gitlab-network```
 
-Hosts
+### Hosts (/etc/hosts)
 127.0.0.1 gitlab.example.com
 127.0.0.1 ssh.gitlab.example.com
+127.0.0.1 pages.example.com
+127.0.0.1 registry.gitlab.example.com
 
-SSH Config
+### SSH Config (~/.ssh/config)
 Host ssh.gitlab.example.com¬
   HostName 127.0.0.1
   Port 2222
   User git
-
-
-
------
-
-docker exec -it gitlab-runner gitlab-runner register -n --url http://gitlab.example.com:4567 --registration-token $GITLAB-RUNNER-TOKEN-FROM-PROCEJT-CICD --clone-url http://gitlab.example.com:4567 --executor docker --docker-image "docker:latest" --docker-privileged
-
-docker exec -t gitlab-master gitlab-ctl reconfigure
