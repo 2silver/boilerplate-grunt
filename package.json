@@ -17,7 +17,7 @@
     "accessibility:www": "a11y --delay=3 www.fhstp.ac.at",
     "-------------HTML/PUG------": "",
     "pug:dev": "node_modules/pug-cli/index.js -P -b app -o ./dist/ ./app/*.pug",
-    "pug": "node_modules/pug-cli/index.js -b app -o ./dist/ ./app/*.pug",
+    "pug": "node_modules/pug-cli/index.js -s -b app -o ./dist/ ./app/*.pug",
     "--------------CSS----------": "",
     "css:lint": "./node_modules/stylelint/bin/stylelint.js --syntax scss \"app/styles/**/*.scss\" --cache --cache-location \".stylelintcache/\"",
     "css:compile": "sass --style=expanded --no-source-map --precision 6 ./app/styles/index.scss ./dist/styles/index.css",
@@ -40,7 +40,7 @@
     "dev": "yarn clean && NODE_ENV=${NODE_ENV:=development} && echo $NODE_ENV && yarn watch",
     "--------------PROD----------": "",
     "prebuild": "yarn test",
-    "build": "yarn clean && NODE_ENV=${NODE_ENV:=production} && echo $NODE_ENV Enviroment && yarn js && yarn css && yarn images && pug"
+    "build": "yarn clean && NODE_ENV=${NODE_ENV:=production} && echo $NODE_ENV Enviroment && yarn pug && yarn js && yarn css && yarn images"
   },
   "repository": {
     "type": "git",
