@@ -21,14 +21,9 @@ Host ssh.gitlab.example.com¬
   User git
 
 
-gitlab pages
+## gitlab pages
 
 Edit /etc/gitlab/gitlab.rb.
-Set the inplace_chroot to true for GitLab Pages:
-
-pages_nginx['enable'] = false
-gitlab_pages['external_http'] = ['http://gitlab:81']
-gitlab_pages['inplace_chroot'] = true
 
 Reconfigure GitLab.
 

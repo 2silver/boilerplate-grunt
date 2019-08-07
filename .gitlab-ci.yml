@@ -1,4 +1,7 @@
 image: node:latest
+variables:
+  # overlay2 driver, speed it up
+  DOCKER_DRIVER: overlay2
 
 # define cache here, to share over all stages
 cache:
@@ -10,13 +13,8 @@ stages: [build, test, staging, deploy]
 setup_js:
   stage: build
   script:
-    - npm install sass
-    - npm install
-  # artifacts:
-  #   expire_in: 72h
-  #   when: on_success
-  #   paths:
-  #     - node_modules/
+    - yarn add sass
+    - yarn install
   only:
     - master
   tags:
@@ -27,7 +25,7 @@ test_js:
   dependencies:
   - setup_js
   script:
-    - npm test
+    - yarn test
   only:
     - master
   tags:

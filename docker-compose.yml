@@ -30,12 +30,10 @@ services:
         ## GitLab Pages
         ##! Docs: https://docs.gitlab.com/ce/pages/administration.html
         ################################################################################
+        pages_external_url "http://pages.example.com/"
         gitlab_pages['enable'] = true
+        gitlab_pages['external_http'] = ['0.0.0.0:81']
         pages_nginx['enable'] = false
-        # gitlab_pages['external_http'] = 'http://pages.example.com/'
-        gitlab_pages['external_http'] = ['http://gitlab:81']
-        pages_external_url 'http://pages.example.com/'
-        gitlab_pages['inplace_chroot'] = true
   gitlab-runner:
     image: gitlab/gitlab-runner:alpine
     restart: always
