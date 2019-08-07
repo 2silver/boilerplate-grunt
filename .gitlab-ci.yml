@@ -35,7 +35,6 @@ test_js:
 pages:
   stage: deploy
   script:
-    - yarn add -g sass
     - yarn build
   # - mkdir .public
   # - cp -r * .public
