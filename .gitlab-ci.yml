@@ -4,11 +4,7 @@ cache:
   paths:
     - node_modules/
 
-stages:
-  – build
-  – test
-  – staging
-  – deploy
+stages: [build, test, staging, deploy]
 
 setup_js:
   stage: build
