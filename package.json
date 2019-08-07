@@ -40,7 +40,7 @@
     "dev": "yarn clean && NODE_ENV=${NODE_ENV:=development} && echo $NODE_ENV && yarn watch",
     "--------------PROD----------": "",
     "prebuild": "yarn test",
-    "build": "yarn clean && NODE_ENV=${NODE_ENV:=production} && echo $NODE_ENV Enviroment && yarn js && yarn css && yarn images"
+    "build": "yarn clean && NODE_ENV=${NODE_ENV:=production} && echo $NODE_ENV Enviroment && yarn js && yarn css && yarn images && pug"
   },
   "repository": {
     "type": "git",

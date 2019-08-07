@@ -5,6 +5,8 @@ variables:
 
 # define cache here, to share over all stages
 cache:
+  key: "$CI_COMMIT_REF_NAME"
+  untracked: true
   paths:
     - node_modules/
 
