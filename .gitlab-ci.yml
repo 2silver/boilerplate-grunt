@@ -1,0 +1,34 @@
+image: node:latest
+
+cache:
+  paths:
+    - node_modules/
+
+stages:
+  - setup
+  - test
+
+setup_js:
+  stage: setup
+  script:
+    - npm install
+  artifacts:
+    expire_in: 72h
+    when: on_success
+    paths:
+      - node_modules/
+  only:
+    - staging
+  tags:
+    - docker
+
+test_js:
+  stage: test
+  dependencies:
+  - setup_js
+  script:
+    - npm test
+  only:
+    - staging
+  tags:
+    - docker

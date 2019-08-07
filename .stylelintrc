@@ -1,0 +1,33 @@
+{
+  "extends": [
+    "stylelint-prettier/recommended",
+    "stylelint-config-recommended"
+  ],
+  "plugins": [
+    "stylelint-order",
+    "stylelint-scss",
+    "stylelint-prettier",
+  ],
+  "rules": {
+    "prettier/prettier": true,
+    "at-rule-empty-line-before": ["always", {
+      "except": ["after-same-name"]
+    }],
+    "rule-empty-line-before": [
+      "always",
+      {
+        "ignore": ["after-comment", "first-nested"],
+        "severity": "warning"
+      }
+    ],
+
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["@each", "@extend", "@include"]
+      }
+    ],
+    "at-rule-no-vendor-prefix": true,
+    "indentation": 4
+  }
+}
