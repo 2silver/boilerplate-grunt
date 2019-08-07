@@ -6,7 +6,7 @@ services:
     container_name: 'gitlab'
     hostname: gitlab.example.com
     volumes: ["gitlab-config:/etc/gitlab", "gitlab-logs:/var/log/gitlab", "gitlab-data:/var/opt/gitlab"]
-    ports: ["443", "1000:80", "2222:22", "4567:4567"]
+    ports: ["443", "1000:80", "81:81", "2222:22", "4567:4567"]
     restart: always
     networks:
       - gitlab-network
@@ -30,7 +30,12 @@ services:
         ## GitLab Pages
         ##! Docs: https://docs.gitlab.com/ce/pages/administration.html
         ################################################################################
+        gitlab_pages['enable'] = true
+        pages_nginx['enable'] = false
+        # gitlab_pages['external_http'] = 'http://pages.example.com/'
+        gitlab_pages['external_http'] = ['http://gitlab:81']
         pages_external_url 'http://pages.example.com/'
+        gitlab_pages['inplace_chroot'] = true
   gitlab-runner:
     image: gitlab/gitlab-runner:alpine
     restart: always

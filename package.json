@@ -17,7 +17,7 @@
     "accessibility:www": "a11y --delay=3 www.fhstp.ac.at",
     "--------------CSS----------": "",
     "css:lint": "./node_modules/stylelint/bin/stylelint.js --syntax scss \"app/styles/**/*.scss\" --cache --cache-location \".stylelintcache/\"",
-    "css:compile": " /usr/local/Cellar/sass/1.22.7/bin/sass --style=expanded --no-source-map --precision 6 ./app/styles/index.scss ./dist/styles/index.css",
+    "css:compile": "sass --style=expanded --no-source-map --precision 6 ./app/styles/index.scss ./dist/styles/index.css",
     "css:prefix": "./node_modules/postcss-cli/bin/postcss --config .postcss.config.js -r ./dist/styles/*.css",
     "css:optimize": "./node_modules/clean-css-cli/bin/cleancss -O2 --format beautify --source-map --source-map-inline-sources -o ./dist/styles/index.css ./dist/styles/*.css",
     "css:minify": "./node_modules/clean-css-cli/bin/cleancss --source-map --source-map-inline-sources -o ./dist/styles/index.min.css ./dist/styles/*.css",

@@ -9,6 +9,7 @@ stages: [build, test, staging, deploy]
 setup_js:
   stage: build
   script:
+    - yarn add -g sass
     - npm install
   artifacts:
     expire_in: 72h
@@ -34,6 +35,7 @@ test_js:
 pages:
   stage: deploy
   script:
+    - yarn add -g sass
     - yarn build
   # - mkdir .public
   # - cp -r * .public
