@@ -11,11 +11,11 @@ setup_js:
   script:
     - npm install sass
     - npm install
-  artifacts:
-    expire_in: 72h
-    when: on_success
-    paths:
-      - node_modules/
+  # artifacts:
+  #   expire_in: 72h
+  #   when: on_success
+  #   paths:
+  #     - node_modules/
   only:
     - master
   tags:
@@ -34,12 +34,16 @@ test_js:
 
 pages:
   stage: deploy
+  dependencies:
+  - setup_js
   script:
     - yarn build
   # - mkdir .public
   # - cp -r * .public
   # - mv .public public
   artifacts:
+    expire_in: 72h
+    when: on_success
     paths:
     - dist
   only:
