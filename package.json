@@ -4,7 +4,7 @@
   "description": "A simple sample project to demonstrate fhstp's gitlab ci workflow",
   "scripts": {
     "--------------Test----------": "",
-    "test": "yarn js:lint && yarn css:lint && yarn accessibility:prebuild",
+    "test": "yarn js:lint && yarn css:lint",
     "--------------Basic----------": "",
     "clean:css": "rm -rf ./dist/styles",
     "clean:js": "rm -rf ./dist/js",
@@ -12,7 +12,7 @@
     "clean": "rm -rf ./dist",
     "--------------Extensions----------": "",
     "accessibility": "a11y --delay=3 'dist/**/*.html'",
-    "accessibility:prebuild": "a11y --delay=3 'app/**/*.html'",
+    "accessibility:afterbuild": "a11y --delay=3 'dist/**/*.html'",
     "accessibility:staging": "a11y --delay=3 staging.fhstp.ac.at",
     "accessibility:www": "a11y --delay=3 www.fhstp.ac.at",
     "-------------HTML/PUG------": "",
