@@ -1,6 +1,7 @@
 module.exports = function(grunt) {
-  grunt.registerTask('default', ['concurrent', 'nunjucks', 'eslint']);
+  grunt.registerTask('default', ['concurrent', 'nunjucks']);
 };
+
 
 // module.exports = function(grunt) {
 //   grunt.registerTask('default', function() {
