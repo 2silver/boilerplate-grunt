@@ -11,9 +11,11 @@ module.exports = function(grunt) {
 
   // Initial config
   const config = {
+    pkg: grunt.file.readJSON(path.join(process.cwd(), 'package.json')),
     src: 'app',
     dist: 'dist',
     tmp: '.tmp',
+    current_year: '<%= grunt.template.today("yyyy") %>',
     banner:
       '\n' +
       '/*!\n' +
@@ -43,8 +45,8 @@ module.exports = function(grunt) {
       },
     },
     data: {
-      pkg: grunt.file.readJSON('package.json'),
-      config, // accessible with '<%= config %>'
+      // pkg: grunt.file.readJSON('package.json'),
+      config, // accessible with ex. '<%= current_year %>'
     },
   });
 };
