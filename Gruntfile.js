@@ -9,9 +9,10 @@ module.exports = function(grunt) {
   // Track execution time
   timeGrunt(grunt);
 
+  const pkg = grunt.file.readJSON(path.join(process.cwd(), 'package.json'));
   // Initial config
   const config = {
-    pkg: grunt.file.readJSON(path.join(process.cwd(), 'package.json')),
+    pkg,
     src: 'app',
     dist: 'dist',
     tmp: '.tmp',
@@ -19,11 +20,11 @@ module.exports = function(grunt) {
     banner:
       '\n' +
       '/*!\n' +
-      ' * <%= pkg.name %>\n' +
+      ' * ' + pkg.name + '\n' +
       ' * \n' +
-      ' * <%= pkg.url %>\n' +
-      ' * @author <%= pkg.author %>\n' +
-      ' * @version <%= pkg.version %>:build<%= grunt.template.today("yyyy-mm-dd") %>\n' +
+      ' * ' + pkg.url + '\n' +
+      ' * @author ' + pkg.author + '\n' +
+      ' * @version ' + pkg.version + ':build<%= grunt.template.today("yyyy-mm-dd") %>\n' +
       ' */\n\n',
     env: process.env,
   };
