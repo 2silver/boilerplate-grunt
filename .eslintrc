@@ -36,6 +36,7 @@
     "jsx-quotes": 1,
     "no-underscore-dangle": 1,
     "quotes": [2, "single"],
+    "func-names": 0,
     "strict": 0,
     "camelcase": 0,
     "curly": 2,

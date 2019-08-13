@@ -1,17 +1,19 @@
 module.exports = {
   options: {
-    // data: <%= data %>,
-    // paths: 'templates',
-    // banner: '<%= config.banner %>',
+    data: '<%= config %>',
+    paths: ['<%= config.src %>/html'],
+    banner: '<%= config.banner %>',
+    autoescape: true,
+    cache: false,
   },
-
-  dist: {
+  render: {
     files: [
       {
         expand: true,
-        cwd: '<%= config.src %>/',
+        cwd: '<%= config.src %>/html',
         src: ['**/*.html'],
         dest: '<%= config.dist %>/',
+        ext: '.html',
       },
     ],
   },

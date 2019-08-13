@@ -1,6 +1,6 @@
 module.exports = {
   target: {
-    tasks: [['sass', 'postcss']],
+    tasks: [['sass', 'postcss', 'stylelint']],
     options: {
       logConcurrentOutput: true,
     },

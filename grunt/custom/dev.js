@@ -1,10 +1,3 @@
 module.exports = function(grunt) {
-  grunt.registerTask('dev', [
-    // 'htmlmin',
-    'stylelint',
-    'eslint',
-    'concurrent',
-    'connect',
-    'watch',
-  ]);
+  grunt.registerTask('dev', ['concurrent', 'connect', 'watch']);
 };
