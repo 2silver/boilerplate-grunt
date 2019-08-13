@@ -9,7 +9,7 @@
     "clean:css": "rm -rf ./dist/styles",
     "clean:js": "rm -rf ./dist/js",
     "clean:img": "rm -rf ./dist/images",
-    "clean": "rm -rf ./dist ./public",
+    "clean": "rm -rf ./dist ./public ./.tmp ./.stylelintcache",
     "--------------Extensions----------": "",
     "accessibility": "a11y --delay=3 'dist/**/*.html'",
     "accessibility:afterbuild": "a11y --delay=3 'dist/**/*.html'",
@@ -37,7 +37,7 @@
     "--------------DEV----------": "",
     "watchX": "./node_modules/watch/cli.js 'yarn pug:dev & yarn css:dev & yarn js:dev & yarn images' app",
     "watch": "yarn yarn css:dev & yarn js:dev & yarn images",
-    "dev": "yarn clean && NODE_ENV=${NODE_ENV:=development} && echo $NODE_ENV && yarn watch && yarn serve",
+    "dev": "yarn clean && NODE_ENV=${NODE_ENV:=development} && echo $NODE_ENV && grunt dev",
     "--------------PROD----------": "",
     "prebuild": "yarn test",
     "build": "yarn clean && NODE_ENV=${NODE_ENV:=production} && echo $NODE_ENV Enviroment && yarn pug & yarn js & yarn css & yarn images"

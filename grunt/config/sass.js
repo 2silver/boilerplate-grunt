@@ -10,7 +10,7 @@ module.exports = {
     files: [
       {
         expand: true,
-        cwd: '<%= config.src %>/styles',
+        cwd: '<%= config.src %>/css',
         src: ['*.{scss,sass}'],
         dest: '<%= config.tmp %>/css',
         ext: '.css',

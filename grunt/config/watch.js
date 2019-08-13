@@ -3,15 +3,22 @@ module.exports = {
     livereload: true,
   },
   scripts: {
-    files: ['<%= config.src %>/{js,scripts}/**/*.js'],
+    files: ['<%= config.src %>/js/**/*.js'],
     tasks: ['eslint'],
     options: {
       spawn: false,
     },
   },
   css: {
-    files: ['<%= config.src %>/{css,styles}/**/*.scss'],
+    files: ['<%= config.src %>/css/**/*.scss'],
     tasks: ['sass', 'postcss'],
+    options: {
+      spawn: false,
+    },
+  },
+  html: {
+    files: ['<%= config.src %>/html/**/*.{html,njk}'],
+    tasks: ['nunjucks'],
     options: {
       spawn: false,
     },

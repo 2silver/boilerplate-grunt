@@ -8,9 +8,9 @@ module.exports = {
     files: [
       {
         expand: true,
-        cwd: '<%= config.src %>/scripts',
+        cwd: '<%= config.src %>/js',
         src: ['*.js'],
-        dest: '<%= config.dist %>/scripts',
+        dest: '<%= config.dist %>/js',
       },
     ],
   },
